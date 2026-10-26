@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Liberu\CRM\Advocacy\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Liberu\Foundation\Organizations\Models\Team;
+use App\Traits\IsTenantModel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
@@ -23,10 +22,7 @@ use Illuminate\Support\Carbon;
  */
 final class AdvocacyRecord extends Model
 {
-    public function team(): BelongsTo
-    {
-        return $this->belongsTo(Team::class);
-    }
+    use IsTenantModel;
 
     public const KINDS = ['reference', 'testimonial', 'review', 'case_study_consent', 'speaker', 'advisory_board', 'nomination', 'request', 'recognition'];
 
